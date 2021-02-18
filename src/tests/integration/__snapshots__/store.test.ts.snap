@@ -5,8 +5,12 @@ Object {
   "data": Object {
     "getStore": Object {
       "_id": Any<String>,
-      "latitude": 42.23234,
-      "longitude": 42.3223,
+      "location": Object {
+        "coordinates": Array [
+          42.23234,
+          42.3223,
+        ],
+      },
     },
   },
   "errors": undefined,

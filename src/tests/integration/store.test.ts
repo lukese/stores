@@ -35,9 +35,13 @@ describe("Store", () => {
       await populateDatabase(StoreMongooseModel, [
           {
               _id: storeId,
-              street: 'Test',
-              longitude: 42.3223,
-              latitude: 42.23234,
+              location: {
+                  type: 'Point',
+                  coordinates: [
+                      42.23234,
+                      42.3223
+                  ]
+              }
           },
       ]);
 
@@ -57,8 +61,9 @@ describe("Store", () => {
         query getStore($id: ObjectId!) {
             getStore(id: $id) {
                 _id
-                longitude
-                latitude
+                location {
+                    coordinates
+                }
             }
         }
     `;
