@@ -170,9 +170,12 @@ describe("Store", () => {
         };
 
         const GET_LOCATIONS = gql`
-          query getNearestLocations($latitude: Float!, $longitude: Float!) {
+          query getNearestLocations($latitude: Float, $longitude: Float) {
               getNearestLocations(latitude: $latitude, longitude: $longitude) {
                   _id
+                  location {
+                      coordinates
+                  }
               }
           }
       `;
@@ -188,28 +191,33 @@ describe("Store", () => {
                 'getNearestLocations': [
                     {
                         _id: expect.any(String),
-                        latitude: 52.362393,
-                        longitude: 4.865615
+                        location: {
+                            coordinates: [52.362393, 4.865615]
+                        }
                     },
                     {
                         _id: expect.any(String),
-                        latitude: 52.321911,
-                        longitude: 4.825133
+                        location: {
+                            coordinates: [52.321911, 4.825133]
+                        }
                     },
                     {
                         _id: expect.any(String),
-                        latitude: 52.341632,
-                        longitude: 4.959806
+                        location: {
+                            coordinates: [52.341632, 4.959806]
+                        }
                     },
                     {
                         _id: expect.any(String),
-                        latitude: 52.296722,
-                        longitude: 4.870180
+                        location: {
+                            coordinates: [52.296722, 4.870180]
+                        }
                     },
                     {
                         _id: expect.any(String),
-                        latitude: 52.217704,
-                        longitude: 4.796438
+                        location: {
+                            coordinates: [52.217704, 4.796438]
+                        }
                     },
                 ]
             }
