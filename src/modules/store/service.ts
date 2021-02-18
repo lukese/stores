@@ -13,4 +13,8 @@ export default class StoreService {
 
     return store;
   }
+
+  public async getNearestLocations(latitude: number, longitude: number): Promise<Store[] | null> {
+    return await this.storeModel.getNearestLocations(latitude, longitude);
+  }
 }

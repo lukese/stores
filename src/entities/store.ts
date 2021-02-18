@@ -5,44 +5,46 @@ import { ID } from "type-graphql";
 import { Location } from "./location";
 import 'reflect-metadata';
 
-@index({ location: '2dsphere' })
 @ObjectType()
+@index({ location: '2dsphere' })
 export class Store {
     @Field(type => ID)
     readonly _id!: ObjectId;
 
-    @Field()
+    @Field({ nullable: true })
+    @prop()
     city: string;
 
-    @Field()
+    @Field({ nullable: true })
+    @prop()
     postalCode: string;
 
     @prop()
-    @Field()
+    @Field({ nullable: true })
     street: string;
 
     @prop()
-    @Field()
+    @Field({ nullable: true })
     street2: string;
 
     @prop()
-    @Field()
+    @Field({ nullable: true })
     street3: string;
 
     @prop()
-    @Field()
+    @Field({ nullable: true })
     addressName: string;
 
     @prop()
     @Field()
     uuid: string;
 
-    @prop()
+    @prop({ type: Location, dim: 1 })
     @Field()
-    location: Location;
+    location?: Location;
 
     @prop()
-    @Field()
+    @Field({ nullable: true })
     complexNumber: string;
 
     @prop()
@@ -50,22 +52,22 @@ export class Store {
     showWarningMessage: boolean;
 
     @prop()
-    @Field()
+    @Field({ nullable: true })
     todayOpen: string;
 
     @prop()
-    @Field()
+    @Field({ nullable: true })
     locationType: string;
 
     @prop()
-    @Field()
-    collectionPoint: boolean;
+    @Field({ nullable: true })
+    collectionPoint?: boolean;
 
     @prop()
-    @Field()
+    @Field({ nullable: true })
     sapStoreID: string;
 
     @prop()
-    @Field()
+    @Field({ nullable: true })
     todayClose: string;
 }

@@ -14,4 +14,9 @@ export default class StoreResolver {
   async getStore(@Arg("id") id: ObjectId) {
     return this.storeService.getById(id);
   }
+
+  @Query((returns) => [Store])
+  async getNearestLocations(@Arg("latitude") latitude: number, @Arg("longitude") longitude: number) {
+    return await this.storeService.getNearestLocations(latitude, longitude);
+  }
 }
