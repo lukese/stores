@@ -11,7 +11,7 @@ export default class StoreModel {
   }
 
   async getNearestLocations(latitude: number, longitude: number): Promise<Store[] | null> {
-    const locations = await StoreMongooseModel.find(
+    return StoreMongooseModel.find(
         { location :
               { $near :
                     {
@@ -23,7 +23,5 @@ export default class StoreModel {
               }
         }
     ).limit(5).exec();
-    console.log(locations);
-    return locations;
   }
 }
