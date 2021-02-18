@@ -1,9 +1,11 @@
 import { ObjectId } from "mongodb";
 import { ObjectType, Field } from "type-graphql";
-import { prop } from "@typegoose/typegoose";
-import { ID, Float } from "type-graphql";
+import { prop, index } from "@typegoose/typegoose";
+import { ID } from "type-graphql";
+import { Location } from "./location";
 import 'reflect-metadata';
 
+@index({ location: '2dsphere' })
 @ObjectType()
 export class Store {
     @Field(type => ID)
@@ -36,12 +38,8 @@ export class Store {
     uuid: string;
 
     @prop()
-    @Field(type => Float)
-    longitude: number;
-
-    @prop()
-    @Field(type => Float)
-    latitude: number;
+    @Field()
+    location: Location;
 
     @prop()
     @Field()
