@@ -19,7 +19,8 @@ _Note_ - Ensure the updated stores json is used, as the coordinates have been tr
 
 Find the nearest Locations:
 
-```query {
+```
+query {
   getNearestLocations (latitude: 51.5073219, longitude: -0.1276474) {
     _id
     postalCode
